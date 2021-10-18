@@ -5,7 +5,6 @@
 * Used in simulation
 ** battery
 *** Ambient temperature [K]': 298.15,
-*** Cation transference number': 0.2594,
 *** Current function [A]': 5.0,
 *** Lower voltage cut-off [V]': 2.5,
 *** Typical current [A]': 5.0,
@@ -15,6 +14,7 @@
 *** Reference temperature [K]': 298.15,
 ** Electrolyte
 *** 1 + dlnf/dlnc': 1.0,
+*** Cation transference number': 0.2594,
 *** Electrolyte conductivity [S.m-1]': <function electrolyte_conductivity_Nyman2008 at 0x7fb4be036940>,
 *** Electrolyte diffusivity [m2.s-1]': <function electrolyte_diffusivity_Nyman2008 at 0x7fb4be0369d0>,
 *** Separator Bruggeman coefficient (electrolyte)': 1.5,
@@ -22,9 +22,10 @@
 *** Separator thickness [m]': 1.2e-05,
 *** Initial concentration in electrolyte [mol.m-3]': 1000.0,
 *** Typical electrolyte concentration [mol.m-3]': 1000.0,
+*** Negative electrode Bruggeman coefficient (electrolyte)': 1.5,
+*** Positive electrode Bruggeman coefficient (electrolyte)': 1.5,
 ** Negative electrode
 *** Negative electrode Bruggeman coefficient (electrode)': 1.5,
-*** Negative electrode Bruggeman coefficient (electrolyte)': 1.5,
 *** Negative electrode OCP [V]': <function graphite_LGM50_ocp_Chen2020 at 0x7fb4bef1cee0>,
 *** Negative electrode OCP entropic change [V.K-1]': 0.0,
 *** Negative electrode active material volume fraction': 0.75,
@@ -41,7 +42,6 @@
 *** Maximum concentration in negative electrode [mol.m-3]': 33133.0,
 ** Positive electrode
 *** Positive electrode Bruggeman coefficient (electrode)': 1.5,
-*** Positive electrode Bruggeman coefficient (electrolyte)': 1.5,
 *** Positive electrode OCP [V]': <function nmc_LGM50_ocp_Chen2020 at 0x7fb4be036ca0>,
 *** Positive electrode OCP entropic change [V.K-1]': 0.0,
 *** Positive electrode active material volume fraction': 0.665,
