@@ -29,3 +29,6 @@ solver = model.default_solver
 n = 100
 t_eval = np.linspace(0, 3600, n)
 solution = solver.solve(model, t_eval)
+
+t = solution["Time [h]"]
+u = solution["Terminal voltage [V]"]
