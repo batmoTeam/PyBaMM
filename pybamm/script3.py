@@ -2,9 +2,9 @@ import pybamm
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-os.chdir(pybamm.__path__[0] + '/..')
 
-pybamm.set_logging_level("VERBOSE")
+# os.chdir(pybamm.__path__[0] + '/..')
+# pybamm.set_logging_level("VERBOSE")
 
 # create the model
 model = pybamm.lithium_ion.DFN()
@@ -20,18 +20,21 @@ param.process_model(model)
 param.process_geometry(geometry)
 
 # example to get value of a variable after processing
-model.variables['Negative electrode surface area to volume ratio [m-1]']
-model.variables['Positive electrode surface area to volume ratio [m-1]']
+# model.variables['Negative electrode surface area to volume ratio [m-1]']
+# model.variables['Positive electrode surface area to volume ratio [m-1]']
 
 # j0_p = param.gamma_p * param.j0_p(c_e_p, c_s_surf_p, T) / param.C_r_p
-param.process_symbol(model.param.gamma_p)
-param.process_symbol(model.param.C_r_p)
-param.process_symbol(model.param.j0_p_dimensional)
+# param.process_symbol(model.param.gamma_p)
+# param.process_symbol(model.param.C_r_p)
+# param.process_symbol(model.param.j0_p_dimensional)
 #self.j0_p_dimensional(c_e_dim, c_s_surf_dim, T_dim) / self.j0_p_ref_dimensional
-param.process_symbol(model.param.j0_p_ref_dimensional)
+# param.process_symbol(model.param.j0_p_ref_dimensional)
 
 # mesh the domains
-mesh = pybamm.Mesh(geometry, model.default_submesh_types, model.default_var_pts)
+var_pts = model.default_var_pts
+var_pts['r_n'] = 10
+var_pts['r_p'] = 10
+mesh = pybamm.Mesh(geometry, model.default_submesh_types, var_pts)
 
 # discretise the model equations
 disc = pybamm.Discretisation(mesh, model.default_spatial_methods)
@@ -41,7 +44,7 @@ disc.process_model(model)
 solver = model.default_solver
 n = 100
 t_eval = np.linspace(0, 3600, n)
-solution = solver.solve(model, t_eval)
+sol = solver.solve(model, t_eval)
 
-t = solution["Time [h]"]
-u = solution["Terminal voltage [V]"]
+t = sol["Time [h]"]
+u = sol["Terminal voltage [V]"]
